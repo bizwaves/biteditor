@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><!-- 裏設定エリアの開始 -->
+<meta charset="utf-8"><!-- 文字化け防止 -->
+
+<style type="text/css">
+body{
+  padding:0;
+  margin:0;
+  font-family:"游ゴシック","YuGothic",sans-serif;
+  line-height:1;
+}
+p,h1{
+  margin:0;
+  padding:0;
+}
+.cards{
+  margin-left:{{左余白(mm)::number}}mm;
+  margin-top:{{上余白(mm)::number}}mm;
+}
+.cards:after{
+  content:"";
+  display:table;
+  clear:left;
+}
+
+.card{
+  display:block;
+  box-sizing:border-box;
+  height:55mm;
+  width:91mm;
+  border:1px dotted #CCC;
+  float:left;
+  position:relative;
+  margin-right:{{名刺間隔左右(mm)::number}}mm;
+  margin-bottom:{{名刺間隔上下(mm)::number}}mm;
+}
+@media print{
+  .card{
+    border:none;
+  }
+}
+.card-h{
+  position:absolute;
+  top:5mm;
+  left:5mm;
+}
+.card-h-cname{
+  font-weight:bold;
+  font-size:11pt;
+}
+.card-main{
+  position:absolute;
+  left:34mm;
+  right:4mm;
+  bottom:4mm;
+  font-size:6.5pt;
+}
+.card-position{
+  font-size:8pt;
+  margin-bottom:3pt;
+  line-height:1.2;
+}
+.card-name{
+  font-weight:bold;
+  font-size:12pt;
+  margin-bottom:3pt;
+}
+.card-alphabet{
+  font-size:6pt;
+  margin-bottom:3pt;
+  color:#808080;
+}
+.card-mail{
+  font-size:8pt;
+  margin-bottom:3pt;
+}
+.card-tel{
+  font-size:8pt;
+  margin-bottom:3pt;
+}
+.card-address{
+  margin-top:7pt;
+  line-height:1.3;
+}
+.card-company-tel{
+  line-height:1.3;
+}
+.card-company-url{
+  line-height:1.3;
+}
+</style>
+</head><!-- 裏設定エリアの終了 --
+
+
+<body><!-- 画面に表示されるエリアの開始 -->
+<div class="cards">
+<section class="card">
+  <div class="card-h">
+    <p class="card-h-cname">{{ 会社名 }}</p>
+  </div>
+  <div class="card-main">
+    <p class="card-position">{{ 役職::multiline }}</p>
+    <h1 class="card-name">{{ 名前 }}</h1>
+    <p class="card-alphabet">{{ 名前（アルファベット） }}</p>
+    <p class="card-mail">{{ メールアドレス::mail }}</p>
+    <p class="card-tel">{{ 携帯番号 }}</p>
+    <p class="card-address">{{ 郵便番号 | prepend('〒') }} {{ 会社住所::multiline }}</p>
+    <p class="card-company-tel">{{ 会社電話番号 | prepend('TEL: ') }} {{ 会社FAX番号 | prepend('FAX:') }}</p>
+    <p class="card-company-url">{{ URL }}</p>
+  </div>
+</section>
+<section class="card">
+  <div class="card-h">
+    <p class="card-h-cname">{{ 会社名 }}</p>
+  </div>
+  <div class="card-main">
+    <p class="card-position">{{ 役職::multiline }}</p>
+    <h1 class="card-name">{{ 名前 }}</h1>
+    <p class="card-alphabet">{{ 名前（アルファベット） }}</p>
+    <p class="card-mail">{{ メールアドレス::mail }}</p>
+    <p class="card-tel">{{ 携帯番号 }}</p>
+    <p class="card-address">{{ 郵便番号 | prepend('〒') }} {{ 会社住所::multiline }}</p>
+    <p class="card-company-tel">{{ 会社電話番号 | prepend('TEL: ') }} {{ 会社FAX番号 | prepend('FAX:') }}</p>
+    <p class="card-company-url">{{ URL }}</p>
+  </div>
+</section>
+<section class="card">
+  <div class="card-h">
+    <p class="card-h-cname">{{ 会社名 }}</p>
+  </div>
+  <div class="card-main">
+    <p class="card-position">{{ 役職::multiline }}</p>
+    <h1 class="card-name">{{ 名前 }}</h1>
+    <p class="card-alphabet">{{ 名前（アルファベット） }}</p>
+    <p class="card-mail">{{ メールアドレス::mail }}</p>
+    <p class="card-tel">{{ 携帯番号 }}</p>
+    <p class="card-address">{{ 郵便番号 | prepend('〒') }} {{ 会社住所::multiline }}</p>
+    <p class="card-company-tel">{{ 会社電話番号 | prepend('TEL: ') }} {{ 会社FAX番号 | prepend('FAX:') }}</p>
+    <p class="card-company-url">{{ URL }}</p>
+  </div>
+</section>
+<section class="card">
+  <div class="card-h">
+    <p class="card-h-cname">{{ 会社名 }}</p>
+  </div>
+  <div class="card-main">
+    <p class="card-position">{{ 役職::multiline }}</p>
+    <h1 class="card-name">{{ 名前 }}</h1>
+    <p class="card-alphabet">{{ 名前（アルファベット） }}</p>
+    <p class="card-mail">{{ メールアドレス::mail }}</p>
+    <p class="card-tel">{{ 携帯番号 }}</p>
+    <p class="card-address">{{ 郵便番号 | prepend('〒') }} {{ 会社住所::multiline }}</p>
+    <p class="card-company-tel">{{ 会社電話番号 | prepend('TEL: ') }} {{ 会社FAX番号 | prepend('FAX:') }}</p>
+    <p class="card-company-url">{{ URL }}</p>
+  </div>
+</section>
+<section class="card">
+  <div class="card-h">
+    <p class="card-h-cname">{{ 会社名 }}</p>
+  </div>
+  <div class="card-main">
+    <p class="card-position">{{ 役職::multiline }}</p>
+    <h1 class="card-name">{{ 名前 }}</h1>
+    <p class="card-alphabet">{{ 名前（アルファベット） }}</p>
+    <p class="card-mail">{{ メールアドレス::mail }}</p>
+    <p class="card-tel">{{ 携帯番号 }}</p>
+    <p class="card-address">{{ 郵便番号 | prepend('〒') }} {{ 会社住所::multiline }}</p>
+    <p class="card-company-tel">{{ 会社電話番号 | prepend('TEL: ') }} {{ 会社FAX番号 | prepend('FAX:') }}</p>
+    <p class="card-company-url">{{ URL }}</p>
+  </div>
+</section>
+<section class="card">
+  <div class="card-h">
+    <p class="card-h-cname">{{ 会社名 }}</p>
+  </div>
+  <div class="card-main">
+    <p class="card-position">{{ 役職::multiline }}</p>
+    <h1 class="card-name">{{ 名前 }}</h1>
+    <p class="card-alphabet">{{ 名前（アルファベット） }}</p>
+    <p class="card-mail">{{ メールアドレス::mail }}</p>
+    <p class="card-tel">{{ 携帯番号 }}</p>
+    <p class="card-address">{{ 郵便番号 | prepend('〒') }} {{ 会社住所::multiline }}</p>
+    <p class="card-company-tel">{{ 会社電話番号 | prepend('TEL: ') }} {{ 会社FAX番号 | prepend('FAX:') }}</p>
+    <p class="card-company-url">{{ URL }}</p>
+  </div>
+</section>
+<section class="card">
+  <div class="card-h">
+    <p class="card-h-cname">{{ 会社名 }}</p>
+  </div>
+  <div class="card-main">
+    <p class="card-position">{{ 役職::multiline }}</p>
+    <h1 class="card-name">{{ 名前 }}</h1>
+    <p class="card-alphabet">{{ 名前（アルファベット） }}</p>
+    <p class="card-mail">{{ メールアドレス::mail }}</p>
+    <p class="card-tel">{{ 携帯番号 }}</p>
+    <p class="card-address">{{ 郵便番号 | prepend('〒') }} {{ 会社住所::multiline }}</p>
+    <p class="card-company-tel">{{ 会社電話番号 | prepend('TEL: ') }} {{ 会社FAX番号 | prepend('FAX:') }}</p>
+    <p class="card-company-url">{{ URL }}</p>
+  </div>
+</section>
+<section class="card">
+  <div class="card-h">
+    <p class="card-h-cname">{{ 会社名 }}</p>
+  </div>
+  <div class="card-main">
+    <p class="card-position">{{ 役職::multiline }}</p>
+    <h1 class="card-name">{{ 名前 }}</h1>
+    <p class="card-alphabet">{{ 名前（アルファベット） }}</p>
+    <p class="card-mail">{{ メールアドレス::mail }}</p>
+    <p class="card-tel">{{ 携帯番号 }}</p>
+    <p class="card-address">{{ 郵便番号 | prepend('〒') }} {{ 会社住所::multiline }}</p>
+    <p class="card-company-tel">{{ 会社電話番号 | prepend('TEL: ') }} {{ 会社FAX番号 | prepend('FAX:') }}</p>
+    <p class="card-company-url">{{ URL }}</p>
+  </div>
+</section>
+<section class="card">
+  <div class="card-h">
+    <p class="card-h-cname">{{ 会社名 }}</p>
+  </div>
+  <div class="card-main">
+    <p class="card-position">{{ 役職::multiline }}</p>
+    <h1 class="card-name">{{ 名前 }}</h1>
+    <p class="card-alphabet">{{ 名前（アルファベット） }}</p>
+    <p class="card-mail">{{ メールアドレス::mail }}</p>
+    <p class="card-tel">{{ 携帯番号 }}</p>
+    <p class="card-address">{{ 郵便番号 | prepend('〒') }} {{ 会社住所::multiline }}</p>
+    <p class="card-company-tel">{{ 会社電話番号 | prepend('TEL: ') }} {{ 会社FAX番号 | prepend('FAX:') }}</p>
+    <p class="card-company-url">{{ URL }}</p>
+  </div>
+</section>
+<section class="card">
+  <div class="card-h">
+    <p class="card-h-cname">{{ 会社名 }}</p>
+  </div>
+  <div class="card-main">
+    <p class="card-position">{{ 役職::multiline }}</p>
+    <h1 class="card-name">{{ 名前 }}</h1>
+    <p class="card-alphabet">{{ 名前（アルファベット） }}</p>
+    <p class="card-mail">{{ メールアドレス::mail }}</p>
+    <p class="card-tel">{{ 携帯番号 }}</p>
+    <p class="card-address">{{ 郵便番号 | prepend('〒') }} {{ 会社住所::multiline }}</p>
+    <p class="card-company-tel">{{ 会社電話番号 | prepend('TEL: ') }} {{ 会社FAX番号 | prepend('FAX:') }}</p>
+    <p class="card-company-url">{{ URL }}</p>
+  </div>
+</section>
+</div>    
+</body><!-- 画面に表示されるエリアの終了 -->
+
+</html>

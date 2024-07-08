@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- 裏設定エリアの開始 -->
+<meta charset="utf-8"><!-- 文字化け防止 -->
+<style type="text/css">
+    body{
+  padding:0;
+  margin:0;
+  font-family:Avenir,sans-serif;
+  line-height:1.7;
+}
+.page{
+  box-sizing:border-box;
+  margin:0;
+  padding:2cm;
+  position:relative;
+}
+@media print{
+  .page{
+    width: 210mm;
+    page-break-after:always;
+  }
+}
+h1{
+  margin:0 0 10pt;
+  font-size:26pt;
+}
+.no{
+  text-align:right;
+  margin:0;
+  position:absolute;
+  right:290pt;
+  top:2cm;
+}
+.no-number{
+  display:inline-block;
+  font-family:Avenir
+  font-size:11pt;
+  padding-bottom:2pt;
+  border-bottom:0.5pt solid #000;
+}
+.no-date{
+  font-weight:bold;
+  font-size:13pt;
+  display:block;
+  padding-top:8pt;
+}
+.stamps{
+  border-collapse:collapse;
+  position:absolute;
+  right:2cm;
+  top:2cm;
+}
+.stamps th,
+.stamps td{
+  border:0.5pt solid #666;
+}
+.stamps th{
+  font-size:8pt;
+}
+.stamps td.stamp{
+  height:50pt;
+  width:50pt
+}
+h2{
+ margin-top:24pt;
+ border-top:0.5pt solid #666;
+ padding-top:1pt;
+ margin-bottom:0;
+}
+.code{
+  font-size:18pt;
+  position:relative;
+  padding-top:10pt;
+  display:inline-block;
+  vertical-align:top;
+  width:160pt;
+  border-right:0.5pt solid #666;
+}
+.code:before{
+  font-size:8pt;
+  content:"コード";
+  position:absolute;
+  left:0;
+  top:0;
+}
+.to{
+  display:inline-block;
+  vertical-align:top;
+  position:relative;
+  padding-top:8pt;
+  font-size:12pt;
+  padding-left:12pt;
+}
+.to:before{
+  font-size:8pt;
+  content:"支払先";
+  position:absolute;
+  left:0;
+  top:0;
+}
+.to-name{
+  font-size:18pt;
+}
+.main{
+  width:100%;
+  border-collapse: collapse;
+}
+.main th,.main td{
+  border:0.5pt solid #666;
+  padding:2pt 5pt;
+}
+.main th{
+  border-top:2pt solid #666;
+  text-align:center;
+}
+.main th:first-child,
+.main td:first-child{
+  border-left:0;
+}
+.main th:last-child,
+.main td:last-child{
+  border-right:0;
+}
+.main .num{
+  text-align:right;
+}
+.main .num-sum{
+  border-top:2pt solid #666;
+  font-weight:bold;
+}
+</style>
+</head><!-- 裏設定エリアの終了 --
+
+
+<body><!-- 画面に表示されるエリアの開始 -->
+    <div class="page page-main">
+  <h1>入金伝票</h1>
+  <p class="no">
+    <span class="no-number">No.{{ 伝票番号 | toPageTitle }}</span>
+    <span class="no-date">{{ 日付 | date('YYYY年M月D日') }}</span>
+  </p>
+  <table class="stamps">
+    <tr>
+      <th colspan="3">承認印</th>
+      <th>係印</th>
+    </tr>
+    <tr>
+      <td class="stamp"></td>
+      <td class="stamp"></td>
+      <td class="stamp"></td>
+      <td class="stamp"></td>
+    </tr>
+  </table>
+　　　　<h2>
+    <span class="code">{{ コード }}</span>
+    <span class="to">
+      <span class="to-name">{{ 宛名 }}</span>
+      {{ 敬称[[御中,様]]((御中)) }}
+    </span>
+  </h2>
+  <table class="main">
+    <tr>
+      <th>勘定科目</th>
+      <th>摘要</th>
+      <th>金額</th>
+    </tr>
+    <tr>
+      <td>{{ 勘定科目1 }}</td>
+      <td>{{ 摘要1 }}</td>
+      <td class="num">{{ 金額1 | addComma | prepend('¥') }}</td>
+    </tr>
+    <tr>
+      <td>{{ 勘定科目2 }}</td>
+      <td>{{ 摘要2 }}</td>
+      <td class="num">{{ 金額2 | addComma | prepend('¥') }}</td>
+    </tr>
+    <tr>
+      <td>{{ 勘定科目3 }}</td>
+      <td>{{ 摘要3 }}</td>
+      <td class="num">{{ 金額3 | addComma | prepend('¥') }}</td>
+    </tr>
+    <tr>
+      <td>{{ 勘定科目4 }}</td>
+      <td>{{ 摘要4 }}</td>
+      <td class="num">{{ 金額4 | addComma | prepend('¥') }}</td>
+    </tr>
+    <tr>
+      <th colspan="2">合計</th>
+      <td class="num num-sum">{{ 合計 = SUM(金額) | addComma }}</td>
+    </tr>
+  </table>
+</div>
+</body><!-- 画面に表示されるエリアの終了 -->
+
+</html>

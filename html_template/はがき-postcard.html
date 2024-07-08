@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><!-- 裏設定エリアの開始 -->
+<meta charset="utf-8"><!-- 文字化け防止 -->
+
+<style type="text/css">
+body{
+  padding:0;
+  margin:0;
+  font-family:Avenir,sans-serif;
+  line-height:1.7;
+}
+.page{
+  box-sizing:border-box;  
+  padding:12mm 9mm;
+  height:147.5mm;
+  position:relative;
+}
+.stamp{
+  border:1px dotted red;
+  width:18.5mm;
+  height:22.5mm;
+}
+@media print{
+  .stamp{
+    border-color:transparent;
+  }
+}
+
+.zip{
+  position:absolute;
+  right:8.5mm;
+  top:11.5mm;
+  text-align:right;
+  line-height:1.65;
+}
+.zip-hidden{
+  display:none;
+}
+.zip-num3,.zip-num4{
+  display:block;
+  float:left;
+  box-sizing:content-box;
+  width:5.7mm;
+  height:8mm;
+  text-align:center;
+  font-size:5mm;
+}
+.zip-num3{
+  border:0.5mm solid red;
+  margin-right:0.3mm;
+  position:relative;
+}
+.zip-num3.mode-3{
+  margin-right:0.9mm;
+}
+.zip-num3.mode-3:after{
+  width:0.9mm;
+  height:0.5mm;
+  content:"";
+  background:red;
+  position:absolute;
+  right:-1.4mm;
+  top:50%;
+}
+.zip-num4{
+  border:0.3mm solid red;
+  margin-right:0.3mm;
+  margin-top:0.15mm;
+}
+.zip-num4.mode-4{
+  margin-right:0;
+}
+@media print{
+  .zip-num3,.zip-num4{
+    border-color:transparent;
+  }
+  .zip-num3.mode-3:after{
+    background:none;
+  }
+}
+p{
+  font-family: 'Yu Mincho', YuMincho, 'Hiragino Mincho ProN', 'Hiragino Mincho Pro', 'HGP明朝B', serif;
+  -webkit-font-feature-settings: 'pkna';
+  font-feature-settings: 'pkna';
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.03em;
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+}
+.to-address{
+  position:absolute;
+  right:10pt;
+  top:30mm;
+}
+.to-main{
+  position:absolute;
+  left:48%;
+  top:30mm;
+  transform:translateX(-50%);
+  line-height:1.2;
+}
+.to-title{
+  font-size:14pt;
+  display:block;
+  margin-left:5pt;
+}
+.to-name{
+  font-size:20pt;
+  font-weight:bold;
+}
+.to-honor{
+  margin-top:5pt;
+}
+.from{
+  margin:0;
+  position:absolute;
+  left:53pt;
+  top:61mm;
+  transform:translateX(-50%);
+  line-height:1.4;
+  height:140pt
+}
+.from-address{
+  display:block;
+  font-size:10pt;
+}
+.from-zip{
+  font-size:11pt;
+  position:absolute;
+  left:7mm;
+  top:123mm;
+  line-height:1;
+  font-family:monospace;
+  letter-spacing:4pt;
+}
+.from-zip-first{
+  display:inline-block;
+  margin-right:2pt;
+}
+.from-zip-hidden{
+  display:none;
+}
+</style>
+</head><!-- 裏設定エリアの終了 --
+
+
+<body><!-- 画面に表示されるエリアの開始 -->
+<div class="page">
+<div class="stamp"></div>
+<div class="zip">
+  <span class="zip-hidden">{{ 郵便番号 }}</span>
+  <span class="zip-num3 mode-1">{{ =郵便番号|substr(0,1)}}</span>
+  <span class="zip-num3 mode-2">{{ =郵便番号|substr(1,1)}}</span>
+  <span class="zip-num3 mode-3">{{ =郵便番号|substr(2,1)}}</span>
+  <span class="zip-num4 mode-1">{{ =郵便番号|substr(-4,1)}}</span>
+  <span class="zip-num4 mode-2">{{ =郵便番号|substr(-3,1)}}</span>
+  <span class="zip-num4 mode-3">{{ =郵便番号|substr(-2,1)}}</span>
+  <span class="zip-num4 mode-4">{{ =郵便番号|substr(-1,1)}}</span>
+</div>
+<p class="to-address">{{ 住所::multiline }}</p>
+<p class="to-main">
+  <span class="to-title">{{ 部署・肩書等::multiline }}</span>
+  <span class="to-name">{{ 名前 }} </span>
+  <span class="to-honor">{{ 宛名敬称[[様,御中]]((様)) }}</span>
+</p>
+<p class="from">
+<span class="from-address">{{ 送信者住所等::multiline }}</span>
+<span class="from-name">{{ 送信者名前::multiline }}</span>
+</p>
+<div class="from-zip">
+  <span class="from-zip-hidden">{{ 送信者郵便番号 }}</span>
+  <span class="from-zip-first">{{ =送信者郵便番号|substr(0,3)}}</span>
+  <span class="from-zip-last">{{ =送信者郵便番号|substr(-4)}}</span>
+</div>
+</div>    
+</body><!-- 画面に表示されるエリアの終了 -->
+
+</html>

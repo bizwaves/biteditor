@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+
+    <!-- Vuetify Material Design Icons
+      1) MDI - CSS ※採用 2023.12.20
+        https://vuetifyjs.com/en/features/icon-fonts/#material-design-icons 
+      2) MDI - JS SVG ※TODO 2024.01.11a product 時表示されない  要 @mdi/js (or unplugin-icons?)
+        参照: main.js
+    -->
+
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+
+
+    <title><%= htmlWebpackPlugin.options.title %></title>
+
+    <!-- 
+        TODO Cross-Origin Read Blocking (CORB) 已屏蔽 MIME 类型为 text/html 的跨域响应 
+          参考 components.formual.TiptapInteractiveKatex.vue:  
+          import 'mathlive/dist/mathlive-fonts.css'
+    -->
+    <!-- 
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/browse/mathlive@0.86.0/dist//mathlive-fonts.css" /> 
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/browse/mathlive@0.86.0/dist/mathlive-static.css" /> 
+    -->
+
+
+  </head>
+  <body>
+
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+
+
+    <!-- お試し 2023.12.15a -->
+    <script  type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" }},
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\(","\)"] ],
+          processEscapes: true
+        },
+        "HTML-CSS": { matchFontHeight: false },
+        displayAlign: "left",
+        displayIndent: "2em"
+      });
+    </script>
+
+
+  </body>
+</html>

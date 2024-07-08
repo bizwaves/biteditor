@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- 裏設定エリアの開始 -->
+    <meta charset="utf-8"><!-- 文字化け防止 -->
+    <style type="text/css">
+    body{
+  padding:0;
+  margin:0;
+  font-family:Avenir,sans-serif;
+  line-height:1.7;
+}
+.page{
+  box-sizing:border-box;
+  margin:0;
+  padding:2cm;
+  position:relative;
+}
+@media print{
+  .page{
+    width: 210mm;
+    page-break-after:always;
+  }
+}
+h1{
+  margin:0 0 24pt;
+  font-size:26pt;
+}
+.no{
+  text-align:right;
+  margin:0;
+  position:absolute;
+  right:290pt;
+  top:2cm;
+}
+.no-number{
+  display:inline-block;
+  font-family:Avenir
+  font-size:11pt;
+  padding-bottom:2pt;
+  border-bottom:0.5pt solid #000;
+}
+.no-date{
+  font-weight:bold;
+  font-size:13pt;
+  display:block;
+  padding-top:8pt;
+}
+.stamps{
+  border-collapse:collapse;
+  position:absolute;
+  right:2cm;
+  top:2cm;
+}
+.stamps th,
+.stamps td{
+  border:0.5pt solid #666;
+}
+.stamps th{
+  font-size:8pt;
+}
+.stamps td.stamp{
+  height:50pt;
+  width:50pt
+}
+.main{
+  width:100%;
+  border-collapse: collapse;
+}
+.main th,.main td{
+  border:0.5pt solid #666;
+  padding:2pt 5pt;
+}
+.main th{
+  border-top:2pt solid #666;
+  text-align:center;
+}
+.main th:first-child,
+.main td:first-child{
+  border-left:0;
+}
+.main th:last-child,
+.main td:last-child{
+  border-right:0;
+}
+.main .num{
+  text-align:right;
+}
+.main .num-sum{
+  border-top:2pt solid #666;
+  font-weight:bold;
+}
+    </style>
+</head><!-- 裏設定エリアの終了 --
+
+
+<body><!-- 画面に表示されるエリアの開始 -->
+<div class="page page-main">
+  <h1>振替伝票</h1>
+  <p class="no">
+    <span class="no-number">No.{{ 出金伝票番号 | toPageTitle }}</span>
+    <span class="no-date">{{ 日付 | date('YYYY年M月D日') }}</span>
+  </p>
+  <table class="stamps">
+    <tr>
+      <th colspan="3">承認印</th>
+      <th>係印</th>
+    </tr>
+    <tr>
+      <td class="stamp"></td>
+      <td class="stamp"></td>
+      <td class="stamp"></td>
+      <td class="stamp"></td>
+    </tr>
+  </table>
+  <table class="main">
+    <tr>
+      <th>借方金額</th>
+      <th>借方科目</th>
+      <th>摘要</th>
+      <th>貸方科目</th>
+      <th>貸方金額</th>
+    </tr>
+    <tr>
+      <td class="num">{{ 借方金額1 | addComma | prepend('¥') }}</td>
+      <td>{{ 借方勘定科目1 }}</td>
+      <td>{{ 摘要1 }}</td>
+      <td>{{ 貸方勘定科目1 }}</td>
+      <td class="num">{{ 貸方金額1 | addComma | prepend('¥') }}</td>
+    </tr>
+    <tr>
+      <td class="num">{{ 借方金額2 | addComma | prepend('¥') }}</td>
+      <td>{{ 借方勘定科目2 }}</td>
+      <td>{{ 摘要2 }}</td>
+      <td>{{ 貸方勘定科目2 }}</td>
+      <td class="num">{{ 貸方金額2 | addComma | prepend('¥') }}</td>
+    </tr>
+    <tr>
+      <td class="num">{{ 借方金額3 | addComma | prepend('¥') }}</td>
+      <td>{{ 借方勘定科目3 }}</td>
+      <td>{{ 摘要3 }}</td>
+      <td>{{ 貸方勘定科目3 }}</td>
+      <td class="num">{{ 貸方金額3 | addComma | prepend('¥') }}</td>
+    </tr>
+    <tr>
+      <td class="num">{{ 借方金額4 | addComma | prepend('¥') }}</td>
+      <td>{{ 借方勘定科目4 }}</td>
+      <td>{{ 摘要4 }}</td>
+      <td>{{ 貸方勘定科目4 }}</td>
+      <td class="num">{{ 貸方金額4 | addComma | prepend('¥') }}</td>
+    </tr>
+    <tr>
+      <td class="num num-sum">{{ 合計 = SUM(借方金額) | addComma }}</td>
+      <th colspan="3">合計</th>
+      <td class="num num-sum">{{ 合計 = SUM(貸方金額) | addComma }}</td>
+    </tr>
+  </table>
+</div> 
+</body><!-- 画面に表示されるエリアの終了 -->
+
+</html>
